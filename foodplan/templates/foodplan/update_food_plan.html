@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Food Plan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f8f8f8;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Update Food Plan</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="day">Day:</label>
+            <input type="text" name="day" value="{{ food_plan.day }}">
+            
+            <label for="breakfast">Breakfast:</label>
+            <textarea name="breakfast">{{ food_plan.breakfast }}</textarea>
+            
+            <label for="lunch">Lunch:</label>
+            <textarea name="lunch">{{ food_plan.lunch }}</textarea>
+            
+            <label for="evening_snacks">Evening Snacks:</label>
+            <textarea name="evening_snacks">{{ food_plan.evening_snacks }}</textarea>
+            
+            <label for="dinner">Dinner:</label>
+            <textarea name="dinner">{{ food_plan.dinner }}</textarea>
+            
+            <label for="bed_snacks">Bed Snacks:</label>
+            <textarea name="bed_snacks">{{ food_plan.bed_snacks }}</textarea>
+            
+            <button type="submit">Update Food Plan</button>
+        </form>
+    </div>
+</body>
+</html>

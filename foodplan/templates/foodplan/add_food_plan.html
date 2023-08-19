@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Food Plan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f8f8f8;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            color: #007bff;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add Food Plan</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="day">Day:</label>
+            <select name="day" required>
+                {% for choice in form.fields.day.choices %}
+                    <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                {% endfor %}
+            </select>
+            <label for="breakfast">Breakfast:</label>
+            <textarea name="breakfast" required></textarea>
+            <label for="lunch">Lunch:</label>
+            <textarea name="lunch" required></textarea>
+            <label for="evening_snacks">Evening Snacks:</label>
+            <textarea name="evening_snacks" required></textarea>
+            <label for="dinner">Dinner:</label>
+            <textarea name="dinner" required></textarea>
+            <label for="bed_snacks">Bed Snacks:</label>
+            <textarea name="bed_snacks" required></textarea>
+            <button type="submit">Add Food Plan</button>
+        </form>
+        <a href="{% url 'foodplan_list' %}">Back to Food Plan List</a>
+    </div>
+</body>
+</html>

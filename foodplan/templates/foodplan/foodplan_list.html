@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Food Plan List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1 {
+            text-align: center;
+            padding: 20px 0;
+            color: #333;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: auto;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        a button {
+            margin: 10px;
+        }
+        
+        .right-align {
+            /* text-align: right; */
+            position: relative;
+            left:1150px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Food Plan List</h1>
+    <div class="right-align">
+        <a href="{% url 'add_food_plan' %}">
+            <button>Add New Food Plan</button>
+        </a>
+    </div>
+    <table>
+        <tr>
+            <th>Day</th>
+            <th>Breakfast</th>
+            <th>Lunch</th>
+            <th>Evening Snacks</th>
+            <th>Dinner</th>
+            <th>Bed Snacks</th>
+            <th>Action</th>
+        </tr>
+        {% for food_plan in food_plans %}
+        <tr>
+            <td>{{ food_plan.day }}</td>
+            <td>{{ food_plan.breakfast }}</td>
+            <td>{{ food_plan.lunch }}</td>
+            <td>{{ food_plan.evening_snacks }}</td>
+            <td>{{ food_plan.dinner }}</td>
+            <td>{{ food_plan.bed_snacks }}</td>
+            <td><a href="{% url 'update_food_plan' food_plan.pk %}">Update</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
